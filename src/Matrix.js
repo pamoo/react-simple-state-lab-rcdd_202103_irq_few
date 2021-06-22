@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Cell from './Cell'
+import Cell from './Cell.js'
 
 export default class Matrix extends Component {
 
@@ -11,14 +11,19 @@ export default class Matrix extends Component {
     return this.props.values.map(rowVals => <div className="row">{this.genRow(rowVals)}</div>)
   }
 
-
   render() {
     return (
-@@ -19,3 +21,7 @@ export default class Matrix extends Component {
+      <div id="matrix">
+        {this.genMatrix()}
+      </div>
+    )
   }
 
 }
 
 Matrix.defaultProps = {
-  values: Array(10).fill(Array(10).fill("#F00"))
+  values: (() => {
+    const defRow = ['#F00', '#F00', '#F00', '#F00', '#F00', '#F00', '#F00', '#F00', '#F00', '#F00']
+    return (new Array(10).fill(defRow))
+  })()
 }
